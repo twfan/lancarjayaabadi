@@ -11,7 +11,7 @@ $jumlah_record = mysqli_query($con, "SELECT COUNT(*) as 'total' from barang");
 $jum = mysqli_fetch_array($jumlah_record);
 $halaman = ceil($jum['total'] / $per_hal);
 // var_dump($halaman);
-$page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
+$page = (isset($_GET['page'])) ? (int) $_GET['page'] : 1;
 $start = ($page - 1) * $per_hal;
 ?>
 <div class="col-md-12">
@@ -72,8 +72,8 @@ $start = ($page - 1) * $per_hal;
 			</td>
 		</tr>
 	<?php
-}
-?>
+	}
+	?>
 
 </table>
 <ul class="pagination">
@@ -82,8 +82,8 @@ $start = ($page - 1) * $per_hal;
 		?>
 		<li><a href="?page=<?php echo $x ?>"><?php echo $x ?></a></li>
 	<?php
-}
-?>
+	}
+	?>
 </ul>
 <!-- modal input -->
 <div id="myModal" class="modal fade">

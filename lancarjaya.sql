@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Jun 2019 pada 09.30
+-- Waktu pembuatan: 30 Jun 2019 pada 15.28
 -- Versi server: 10.3.16-MariaDB
 -- Versi PHP: 7.1.30
 
@@ -40,7 +40,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `uname`, `pass`, `foto`) VALUES
-(8, 'malasngoding', '069c546d1d97fd9648d8142b3e0fd3a3', 'text.png');
+(8, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'text.png');
 
 -- --------------------------------------------------------
 
@@ -76,7 +76,10 @@ INSERT INTO `barang` (`id`, `nama`, `modal`, `grosir`, `semi`, `ecer`, `pkp1`, `
 (1111, '1-22330', 5000, 6250, 6750, 7250, 5435, 5798, 250, 250),
 (1112, '1-2051', 6000, 7500, 8100, 8700, 6522, 6957, 50, 50),
 (1113, '1009', 500, 625, 675, 725, 544, 580, 10, 10),
-(1114, '1-6075 T6L', 33000, 41250, 44550, 47850, 35871, 38264, 50, 50);
+(1114, '1-6075 T6L', 33000, 41250, 44550, 47850, 35871, 38264, 50, 50),
+(1115, '1-6074 T6L', 36000, 45000, 48600, 52200, 39132, 41742, 12, 12),
+(1116, 'TES', 12312313, 15390391, 16621623, 17852854, 13383485, 14276127, 123, 123),
+(1117, 'ASDASD', 123, 154, 166, 178, 134, 143, 567, 567);
 
 -- --------------------------------------------------------
 
@@ -199,7 +202,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT untuk tabel `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1115;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1118;
 
 --
 -- AUTO_INCREMENT untuk tabel `barang_laku`

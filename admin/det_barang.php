@@ -9,7 +9,7 @@ include 'header.php';
 $id_brg=mysqli_real_escape_string($con,$_GET['id']);
 
 
-$det=mysqli_query($con,"select * from barang where id='$id_brg'")or die(mysqli_error());
+$det=mysqli_query($con,"select * from barang where id='$id_brg'");
 while($d=mysqli_fetch_array($det)){
 	?>					
 	<table class="table">

@@ -8,11 +8,13 @@
 	?>
 	<title>LANCAR JAYA ABADI</title>
 	<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/custom-style.css">
 	<link rel="stylesheet" type="text/css" href="../assets/js/jquery-ui/jquery-ui.css">
 	<script type="text/javascript" src="../assets/js/jquery.js"></script>
 	<script type="text/javascript" src="../assets/js/jquery.js"></script>
 	<script type="text/javascript" src="../assets/js/bootstrap.js"></script>
 	<script type="text/javascript" src="../assets/js/jquery-ui/jquery-ui.js"></script>	
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
 	<div class="navbar navbar-default">
@@ -78,4 +80,5 @@
 			<li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span>  Logout</a></li>			
 		</ul>
 	</div>
+	
 	<div class="col-md-10">
