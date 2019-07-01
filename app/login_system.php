@@ -15,11 +15,11 @@ $query=mysqli_query($con, "select * from admin where uname='$uname' AND pass='$p
 
 if(mysqli_num_rows($query)==1){
 	$_SESSION['uname']=$uname;
-	header("location:index.php");
+	header("location:dashboard.php");
 	// echo "masuk sini";
 }else{
 	// echo "masuk bawah";
-	header("location:login.php?pesan=gagal")or die(mysql_error());
+	header("location:index.php?pesan=gagal")or die(mysql_error());
 	// mysql_error();
 }
 

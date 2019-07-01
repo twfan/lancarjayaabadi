@@ -1,10 +1,12 @@
 <?php 
 include 'config.php';
-
+$id=$_POST['id'];
 $nama=$_POST['nama'];
 $modal=$_POST['modal'];
 $jumlah=$_POST['jumlah'];
-$sisa=$_POST['jumlah'];
+$sisa=$_POST['sisa'];
+
+
 
 $discount_data = mysqli_query($con, "select * from settings");
 $discount_percent = mysqli_fetch_array($discount_data);
@@ -25,15 +27,15 @@ $pkp1_price = ceil(($pkp1_percent/100 * $ecer_price)) +  $ecer_price;
 $pkp2_price = ceil(($pkp2_percent/100 * $ecer_price)) +  $ecer_price;
 
 
-echo " harga grosir = ".$grosir_price. " harga semi_grosir = ".$semi_grosir_price. " harga ecer = ".$ecer_price. " harga pkp1 = ".$pkp1_price." harga pkp2 = ".$pkp2_price ; 
+$update = mysqli_query($con, "UPDATE barang SET nama='$nama', modal='$modal', grosir='$grosir_price', semi='$semi_grosir_price', ecer='$ecer_price', pkp1='$pkp1_price', pkp2='$pkp2_price', jumlah='$jumlah', sisa='$sisa' WHERE id='$id'");
 
-
-
-$result = mysqli_query($con, "insert into barang values('','$nama','$modal','$grosir_price','$semi_grosir_price','$ecer_price','$pkp1_price','$pkp2_price','$jumlah','$sisa')");
-if (!$result) {
+if (!$update) {
+    // echo "MASUK BAWAH";
     throw new Exception(mysqli_error($con));
 }else{
-    header("location:index.php");
+    // echo $id;
+    // echo "MASUK SINI";
+    header("location:dashboard.php");
 }
 
- ?>
+?>
