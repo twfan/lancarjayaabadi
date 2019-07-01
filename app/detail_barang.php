@@ -105,8 +105,6 @@
       };
 
 
-
-
       $per_hal = 10;
       $jumlah_record = mysqli_query($con, "SELECT COUNT(*) as 'total' from barang");
       $jum = mysqli_fetch_array($jumlah_record);
@@ -127,11 +125,11 @@
         </div>
 
         <div style="margin-top:15px;margin-bottom:15px;">
-          <h2>Data barang</h2>
+          <h2>Edit barang</h2>
         </div>
         <div class="row">
           <div class="col-md-1">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalTambahBarang" style="margin-bottom:20px;"><span class="oi oi-plus" style="margin-right:5px;"></span>Tambah barang</button>
+            <button type="button" class="btn btn-primary" style="margin-bottom:20px;"><span class="oi oi-plus" style="margin-right:5px;"></span>Kembali</button>
           </div>
           <div class="col-md-4 offset-md-7">
             <nav aria-label="Page navigation example">
