@@ -5,6 +5,7 @@ $uname=$_POST['uname'];
 $pass=$_POST['pass'];
 $pas=md5($pass);
 
+
 // echo $uname;
 // echo $pas;
 

@@ -45,12 +45,6 @@ include 'header.php';
                 </div>
             </div>
             <div class="form-group row">
-                <label for="staticEmail" class="col-sm-2 col-form-label">Jumlah barang</label>
-                <div class="col-sm-2">
-                    <input type="text" class="form-control" name="jumlah" value="<?php echo number_format($d['jumlah']) ?>">
-                </div>
-            </div>
-            <div class="form-group row">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Sisa barang</label>
                 <div class="col-sm-2">
                     <input type="text" class="form-control" name="sisa" value="<?php echo number_format($d['sisa']) ?>">

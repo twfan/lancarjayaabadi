@@ -1,9 +1,9 @@
 <?php
 include 'config.php';
 
+$toko = $_POST['toko'];
 $nama = $_POST['nama'];
-$modal = $_POST['modal'];
-$jumlah = $_POST['jumlah'];
+$total_transaksi = $_POST['totalTransaksi'];
 
 $discount_data = mysqli_query($con, "select * from settings");
 $discount_percent = mysqli_fetch_array($discount_data);
@@ -46,3 +46,4 @@ if ($brg) {
         header("location:dashboard.php");
     }
 }
+?>

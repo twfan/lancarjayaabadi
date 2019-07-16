@@ -33,7 +33,13 @@ $start = ($page - 1) * $per_hal;
   </div>
 
   <div style="margin-top:15px;margin-bottom:15px;">
+    <?php 
+       echo "<script>";
+        echo "swal('Good job!', 'You clicked the button!', 'success')";
+        echo "</script>";
+    ?>
     <h2>Data barang</h2>
+    <a href="cetak.php" target="_blank">CETAK</a>
   </div>
   <div class="row">
     <div class="col-md-1">
@@ -42,7 +48,7 @@ $start = ($page - 1) * $per_hal;
     <div class="col-md-4 offset-md-7">
       <nav aria-label="Page navigation example">
         <ul class="pagination">
-          <li class="page-item"><a class="page-link" href="?page=<?php echo $page - 1 ?>">Previous</a></li>
+          <li class="page-item"><a class="page-link" href="?page=<?php echo  $page == 1 ? $page = 1 : $page - 1 ?>">Previous</a></li>
           <?php
           for ($x = 1; $x <= $halaman; $x++) {
             if ($page == $x) {
@@ -56,7 +62,7 @@ $start = ($page - 1) * $per_hal;
             }
           }
           ?>
-          <li class="page-item"><a class="page-link" href="?page=<?php echo $page + 1 ?>">Next</a></li>
+          <li class="page-item"><a class="page-link" href="?page=<?php echo  $page == $halaman ? $page = $halaman : $page + 1 ?>">Next</a></li>
         </ul>
       </nav>
     </div>
@@ -69,13 +75,13 @@ $start = ($page - 1) * $per_hal;
         <tr>
           <th>No</th>
           <th>Nama Barang</th>
+          <th>Modal</th>
           <th>Grosir</th>
           <th>Semi Grosir</th>
           <th>Ecer</th>
           <th>Pkp1</th>
           <th>Pkp2</th>
-          <th>Jumlah</th>
-          <th>Sisa</th>
+          <th>Stock</th>
           <th>Opsi</th>
         </tr>
       </thead>
@@ -98,12 +104,12 @@ $start = ($page - 1) * $per_hal;
           <tr>
             <td><?php echo $no++ ?></td>
             <td><?php echo $b['nama'] ?></td>
+            <td>Rp.<?php echo number_format($b['modal']) ?>,-</td>
             <td>Rp.<?php echo number_format($b['grosir']) ?>,-</td>
             <td>Rp.<?php echo number_format($b['semi']) ?>,-</td>
             <td>Rp.<?php echo number_format($b['ecer']) ?>,-</td>
             <td>Rp.<?php echo number_format($b['pkp1']) ?>,-</td>
             <td>Rp.<?php echo number_format($b['pkp2']) ?>,-</td>
-            <td><?php echo $b['jumlah'] ?></td>
             <td><?php echo $b['sisa'] ?></td>
             <td>
               <!-- <a href="det_barang.php?id=<?php echo $b['id']; ?>" class="btn btn-info">Detail</a> -->

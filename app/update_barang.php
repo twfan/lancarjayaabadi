@@ -3,7 +3,6 @@ include 'config.php';
 $id=$_POST['id'];
 $nama=$_POST['nama'];
 $modal=$_POST['modal'];
-$jumlah=$_POST['jumlah'];
 $sisa=$_POST['sisa'];
 
 
@@ -27,7 +26,7 @@ $pkp1_price = ceil(($pkp1_percent/100 * $ecer_price)) +  $ecer_price;
 $pkp2_price = ceil(($pkp2_percent/100 * $ecer_price)) +  $ecer_price;
 
 
-$update = mysqli_query($con, "UPDATE barang SET nama='$nama', modal='$modal', grosir='$grosir_price', semi='$semi_grosir_price', ecer='$ecer_price', pkp1='$pkp1_price', pkp2='$pkp2_price', jumlah='$jumlah', sisa='$sisa' WHERE id='$id'");
+$update = mysqli_query($con, "UPDATE barang SET nama='$nama', modal='$modal', grosir='$grosir_price', semi='$semi_grosir_price', ecer='$ecer_price', pkp1='$pkp1_price', pkp2='$pkp2_price', sisa='$sisa' WHERE id='$id'");
 
 if (!$update) {
     // echo "MASUK BAWAH";
