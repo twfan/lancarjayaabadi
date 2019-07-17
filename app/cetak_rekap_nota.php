@@ -25,7 +25,7 @@ session_start();
 <?php
 $no = 1;
 $idTransaksi = $_GET['idTransaksi'];
-$sql = mysqli_query($con, "select `nama_barang`, `banyak`, `harga` from transaksi_detail where id_transaksi='$idTransaksi' ");
+$sql = mysqli_query($con, "select `nama_barang`, `banyak`, `harga`, `jumlah` from transaksi_detail where id_transaksi='$idTransaksi' ");
 $detailTransaksi = mysqli_query($con, "select * from transaksi where id='$idTransaksi' ");
 $dataDetail = mysqli_fetch_assoc($detailTransaksi);
 ?>
@@ -33,7 +33,7 @@ $dataDetail = mysqli_fetch_assoc($detailTransaksi);
 <body>
     <table style="font-size: 10px;margin-bottom:20px;margin-top:20px;">
         <tr>
-            <td style="font-size:20px;">LANCAR JAYA ABADI</td>
+            <td style="font-size:20px;">LANCAR JAYA ABADI - Rekap Nota</td>
         </tr>
         <tr>
             <td>Jl. Kedung Anyar 9/21 Surabaya (60251)</td>
@@ -65,11 +65,7 @@ $dataDetail = mysqli_fetch_assoc($detailTransaksi);
                 </tr>
             </table>
         </div>
-
     </div>
-
-
-
 
     <small style="font-size:7px;">*Barang yang sudah dibeli tidak dapat dikembalikan</small>
     <table border="1" style="width: 100%;font-size: 12px;">
@@ -109,7 +105,7 @@ $dataDetail = mysqli_fetch_assoc($detailTransaksi);
 
     <table style="font-size: 10px;margin-bottom:20px;margin-top:20px;">
         <tr>
-            <td style="font-size:20px;">LANCAR JAYA ABADI</td>
+            <td style="font-size:20px;">LANCAR JAYA ABADI - Rekap Nota</td>
         </tr>
         <tr>
             <td>Jl. Kedung Anyar 9/21 Surabaya (60251)</td>

@@ -2,19 +2,19 @@
 
 include 'header.php';
 
-//set page session product
+//set id faktur
 // ==================================
-if (isset($_GET["page"])) {
-  $page  = $_GET["page"];
+if (isset($_POST["id"])) {
+  $idFaktur  = $_POST["id"];
 } else {
-  $page = 1;
+  $idFaktur = "";
 };
 
 
 
 
 $per_hal = 10;
-$jumlah_record = mysqli_query($con, "SELECT COUNT(*) as 'total' from barang");
+$jumlah_record = mysqli_query($con, "SELECT COUNT(*) as 'total' from transaksi_detail where id_transaksi=$idFaktur");
 $jum = mysqli_fetch_array($jumlah_record);
 $halaman = ceil($jum['total'] / $per_hal);
 // var_dump($halaman);
@@ -38,14 +38,14 @@ $start = ($page - 1) * $per_hal;
         echo "swal('Good job!', 'You clicked the button!', 'success')";
         echo "</script>";
     ?>
-    <h2>Data barang</h2>
-    
+    <h2>Detail transaksi nomor faktur <?php echo $idFaktur; ?></h2>
+    <!-- <a href="cetak.php" target="_blank">CETAK</a> -->
   </div>
   <div class="row">
-    <div class="col-md-1">
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalTambahBarang" style="margin-bottom:20px;"><span class="oi oi-plus" style="margin-right:5px;"></span>Tambah barang</button>
+    <div class="col-md-2">
+    <a href="cetak_rekap_nota.php?idTransaksi=<?php echo $idFaktur;?>" target="_blank">Cetak Faktur</a>
     </div>
-    <div class="col-md-4 offset-md-7">
+    <div class="col-md-4 offset-md-6">
       <nav aria-label="Page navigation example">
         <ul class="pagination">
           <li class="page-item"><a class="page-link" href="?page=<?php echo  $page == 1 ? $page = 1 : $page - 1 ?>">Previous</a></li>
@@ -75,27 +75,22 @@ $start = ($page - 1) * $per_hal;
         <tr>
           <th>No</th>
           <th>Nama Barang</th>
-          <th>Modal</th>
-          <th>Grosir</th>
-          <th>Semi Grosir</th>
-          <th>Ecer</th>
-          <th>Pkp1</th>
-          <th>Pkp2</th>
-          <th>Stock</th>
-          <th>Opsi</th>
+          <th>Banyak</th>
+          <th>Harga</th>
+          <th>Jumlah</th>
         </tr>
       </thead>
       <tbody>
         <?php
         if (isset($_GET['cari'])) {
           $cari = mysqli_real_escape_string($con, $_GET['cari']);
-          $brg = mysqli_query($con, "select * from barang where nama like '%$cari%'");
+          $brg = mysqli_query($con, "select `nama_barang`, `banyak`, `harga`, `jumlah` from transaksi_detail where id_transaksi='$idFaktur' ");
           if (!$brg) {
             printf("Error: %s\n", mysqli_error($con));
             exit();
           }
         } else {
-          $brg = mysqli_query($con, "select * from barang order by sisa ASC limit $start, $per_hal");
+          $brg = mysqli_query($con, "select `nama_barang`, `banyak`, `harga`, `jumlah` from transaksi_detail where id_transaksi='$idFaktur' ");
         }
         $no = 1;
         while ($b = mysqli_fetch_array($brg)) {
@@ -103,20 +98,10 @@ $start = ($page - 1) * $per_hal;
           ?>
           <tr>
             <td><?php echo $no++ ?></td>
-            <td><?php echo $b['nama'] ?></td>
-            <td>Rp.<?php echo number_format($b['modal']) ?>,-</td>
-            <td>Rp.<?php echo number_format($b['grosir']) ?>,-</td>
-            <td>Rp.<?php echo number_format($b['semi']) ?>,-</td>
-            <td>Rp.<?php echo number_format($b['ecer']) ?>,-</td>
-            <td>Rp.<?php echo number_format($b['pkp1']) ?>,-</td>
-            <td>Rp.<?php echo number_format($b['pkp2']) ?>,-</td>
-            <td><?php echo $b['sisa'] ?></td>
-            <td>
-              <!-- <a href="det_barang.php?id=<?php echo $b['id']; ?>" class="btn btn-info">Detail</a> -->
-              <a href="edit_barang.php?id=<?php echo $b['id']; ?>" class="btn btn-warning">Edit</a>
-              <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalTambahBarang" style="margin-bottom:20px;"><span class="oi oi-plus" style="margin-right:5px;"></span>Tambah barang</button> -->
-              <a onclick="if(confirm('Apakah anda yakin ingin menghapus data ini ??')){ location.href='hapus.php?id=<?php echo $b['id']; ?>' }" class="btn btn-danger">Hapus</a>
-            </td>
+            <td><?php echo $b['nama_barang'] ?></td>
+            <td><?php echo $b['banyak'] ?></td>
+            <td><?php echo "Rp. ".number_format($b['harga']);  ?></td>
+            <td><?php echo "Rp. ".number_format($b['jumlah']); ?></td>
           </tr>
         <?php
         }

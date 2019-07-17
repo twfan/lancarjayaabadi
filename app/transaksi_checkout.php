@@ -4,46 +4,49 @@ include 'config.php';
 $toko = $_POST['toko'];
 $nama = $_POST['nama'];
 $total_transaksi = $_POST['totalTransaksi'];
+$tanggalSekarang = date("Y-m-d");
 
-$discount_data = mysqli_query($con, "select * from settings");
-$discount_percent = mysqli_fetch_array($discount_data);
+$result = mysqli_query($con, "insert into transaksi values('','$toko','$nama','$total_transaksi','$tanggalSekarang')");
+if (!$result) {
+    throw new Exception(mysqli_error($con));
+} else {
 
-$grosir_percent = $discount_percent['grosir'];
-$semi_grosir_percent = $discount_percent['semi_grosir'];
-$ecer_percent = $discount_percent['ecer'];
-$pkp1_percent = $discount_percent['pkp1'];
-$pkp2_percent = $discount_percent['pkp2'];
+    // var_dump($result);
 
-// jenis_pembelian = harga modal * persentase_jenis_pembelian
-// harga jual = [jenis_pembelian] + harga modal
-
-$grosir_price = ($grosir_percent / 100 * $modal) +  $modal;
-$semi_grosir_price = ($semi_grosir_percent / 100 * $modal) +  $modal;
-$ecer_price = ($ecer_percent / 100 * $modal) +  $modal;
-$pkp1_price = ceil(($pkp1_percent / 100 * $ecer_price)) +  $ecer_price;
-$pkp2_price = ceil(($pkp2_percent / 100 * $ecer_price)) +  $ecer_price;
-
-$cari = mysqli_real_escape_string($con,$nama);
-$brg = mysqli_query($con, "select * from barang where nama = '$cari' ");
-if ($brg) {
-    while ($b = mysqli_fetch_array($brg)) {
-        $id = $b["id"];
-        $stock_sisa = $b["sisa"];
-        $stock_akhir = $stock_sisa + $jumlah;
-
-        $result = mysqli_query($con, "UPDATE `barang` SET `modal` = $modal, `sisa` = $stock_akhir WHERE `barang`.`id` = $id");
-        if (!$result) {
-            throw new Exception(mysqli_error($con));
-        } else {
-            header("location:dashboard.php");
+    $data = mysqli_query($con, "select * from transaksi ORDER BY id DESC LIMIT 1");
+    
+    if($data){
+        while ($x = mysqli_fetch_array($data)) {
+            $idTransaksi = $x["id"];
         }
     }
-} else {
-    $result = mysqli_query($con, "insert into barang values('','$nama','$modal','$grosir_price','$semi_grosir_price','$ecer_price','$pkp1_price','$pkp2_price','$jumlah')");
-    if (!$result) {
-        throw new Exception(mysqli_error($con));
-    } else {
-        header("location:dashboard.php");
+
+    // var_dump($idTransaksi);
+
+    $cari = mysqli_real_escape_string($con, $nama);
+    $brg = mysqli_query($con, "select * from cart");
+    if ($brg) {
+        while ($b = mysqli_fetch_array($brg)) {
+
+            $idBarang = $b["id_barang"];
+            $namaBarang = $b["nama_barang"];
+            $banyak = $b["banyak"];
+            $harga = $b["harga"];
+            $jumlah = $b["jumlah"];
+            $tipeHarga = $b["tipe_harga"];
+
+            $barang = mysqli_query($con, "select * from barang where id='$idBarang' ");
+            $dataBarang = mysqli_fetch_assoc($barang);
+            $stock_akhir = $dataBarang["sisa"] - $banyak;
+
+            $result = mysqli_query($con, "insert into transaksi_detail values('','$idTransaksi','$idBarang','$namaBarang','$banyak','$harga','$jumlah','$tipeHarga')");
+            $update_barang_stock = mysqli_query($con, "UPDATE `barang` SET `jumlah` = $stock_akhir, `sisa` = $stock_akhir WHERE `barang`.`id` = $idBarang");
+        }
+
+        include 'remove_item_cart.php';
+
+        header("location:cetak.php?idTransaksi=". $idTransaksi);
     }
 }
+
 ?>

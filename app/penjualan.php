@@ -135,14 +135,14 @@ include 'header.php';
                 </button>
             </div>
             <div class="modal-body">
-                <form action="cetak.php" method="post">
+                <form action="transaksi_checkout.php" method="post" target="_blank">
                     <div class="form-group ">
                         <label>Nama Toko</label>
                         <input name="toko" type="text" class="form-control" placeholder="Nama Toko">
                     </div>
                     <div class="form-group ">
                         <label>Nama Pembeli</label>
-                        <input name="nama" type="number" class="form-control" placeholder="Nama Pembeli">
+                        <input name="nama" type="text" class="form-control" placeholder="Nama Pembeli">
                     </div>
                     <div class="form-group ">
                         <input name="totalTransaksi" type="hidden" class="form-control" placeholder="Nama Pembeli" value="<?php echo $total_transaksi; ?>">

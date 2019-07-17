@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Jun 2019 pada 15.28
+-- Waktu pembuatan: 17 Jul 2019 pada 22.07
 -- Versi server: 10.3.16-MariaDB
 -- Versi PHP: 7.1.30
 
@@ -66,20 +66,17 @@ CREATE TABLE `barang` (
 --
 
 INSERT INTO `barang` (`id`, `nama`, `modal`, `grosir`, `semi`, `ecer`, `pkp1`, `pkp2`, `jumlah`, `sisa`) VALUES
-(1104, '1103', 10000, 12500, 13500, 14500, 10870, 11595, 100, 100),
+(1104, '1103', 10000, 12500, 13500, 14500, 10870, 11595, 699, 699),
 (1105, '1101', 25000, 31250, 33750, 36250, 27175, 28988, 250, 250),
-(1106, '1104', 13000, 16250, 17550, 18850, 14131, 15074, 100, 100),
+(1106, '1104', 13000, 16250, 17550, 18850, 14131, 15074, 72, 72),
 (1107, '1105', 15000, 18750, 20250, 21750, 16305, 17393, 150, 150),
 (1108, '1106', 15000, 18750, 20250, 21750, 16305, 17393, 100, 100),
 (1109, '1-1707', 32000, 40000, 43200, 46400, 34784, 37104, 100, 100),
 (1110, '1-1605', 11300, 14125, 15255, 16385, 12284, 13103, 50, 50),
 (1111, '1-22330', 5000, 6250, 6750, 7250, 5435, 5798, 250, 250),
 (1112, '1-2051', 6000, 7500, 8100, 8700, 6522, 6957, 50, 50),
-(1113, '1009', 500, 625, 675, 725, 544, 580, 10, 10),
-(1114, '1-6075 T6L', 33000, 41250, 44550, 47850, 35871, 38264, 50, 50),
-(1115, '1-6074 T6L', 36000, 45000, 48600, 52200, 39132, 41742, 12, 12),
-(1116, 'TES', 12312313, 15390391, 16621623, 17852854, 13383485, 14276127, 123, 123),
-(1117, 'ASDASD', 123, 154, 166, 178, 134, 143, 567, 567);
+(1113, '1009', 500, 625, 675, 725, 544, 580, 0, 0),
+(1114, '1-6075 T6L', 33000, 41250, 44550, 47850, 35871, 38264, 50, 50);
 
 -- --------------------------------------------------------
 
@@ -117,6 +114,22 @@ INSERT INTO `barang_laku` (`id`, `tanggal`, `nama`, `jumlah`, `harga`, `total_ha
 (58, '2015-02-01', 'pulpen', 1, 3000, 3000, 2000),
 (59, '2015-02-02', 'roti', 2, 3000, 6000, 2000),
 (63, '2016-01-22', 'tic tac', 8, 4000, 32000, 16000);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `cart`
+--
+
+CREATE TABLE `cart` (
+  `id` int(11) NOT NULL,
+  `id_barang` int(11) NOT NULL,
+  `nama_barang` varchar(50) NOT NULL,
+  `banyak` int(11) NOT NULL,
+  `harga` int(11) NOT NULL,
+  `jumlah` int(11) NOT NULL,
+  `tipe_harga` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -160,6 +173,58 @@ CREATE TABLE `settings` (
 INSERT INTO `settings` (`grosir`, `semi_grosir`, `ecer`, `pkp1`, `pkp2`) VALUES
 (25, 35, 45, 6, 11);
 
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `transaksi`
+--
+
+CREATE TABLE `transaksi` (
+  `id` int(11) NOT NULL,
+  `nama_toko` varchar(50) NOT NULL,
+  `nama_pembeli` varchar(50) NOT NULL,
+  `total_transaksi` int(11) NOT NULL,
+  `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `transaksi`
+--
+
+INSERT INTO `transaksi` (`id`, `nama_toko`, `nama_pembeli`, `total_transaksi`, `tanggal`) VALUES
+(1, 'lancar jaya taufan', 'Taufan Erlangga', 12500, '2019-07-16 17:00:00'),
+(2, 'lancar jaya taufan', 'Taufan Erlangga', 1450000, '2019-07-16 17:00:00'),
+(3, 'lancar jaya taufan', 'Taufan Erlangga', 2319000, '2019-07-16 17:00:00'),
+(4, 'lancar jaya taufan', 'Taufan Erlangga', 1788750, '2019-07-16 17:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `transaksi_detail`
+--
+
+CREATE TABLE `transaksi_detail` (
+  `id` int(11) NOT NULL,
+  `id_transaksi` int(11) NOT NULL,
+  `id_barang` int(11) NOT NULL,
+  `nama_barang` varchar(25) NOT NULL,
+  `banyak` int(11) NOT NULL,
+  `harga` int(11) NOT NULL,
+  `jumlah` int(11) NOT NULL,
+  `tipe_harga` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `transaksi_detail`
+--
+
+INSERT INTO `transaksi_detail` (`id`, `id_transaksi`, `id_barang`, `nama_barang`, `banyak`, `harga`, `jumlah`, `tipe_harga`) VALUES
+(1, 1, 1104, '1103', 1, 12500, 12500, 'grosir'),
+(2, 2, 1104, '1103', 100, 14500, 1450000, 'ecer'),
+(3, 3, 1104, '1103', 200, 11595, 2319000, 'pkp2'),
+(4, 4, 1104, '1103', 100, 13500, 1350000, 'semi'),
+(5, 4, 1106, '1104', 25, 17550, 438750, 'semi');
+
 --
 -- Indexes for dumped tables
 --
@@ -183,9 +248,27 @@ ALTER TABLE `barang_laku`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `pengeluaran`
 --
 ALTER TABLE `pengeluaran`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `transaksi`
+--
+ALTER TABLE `transaksi`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `transaksi_detail`
+--
+ALTER TABLE `transaksi_detail`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -202,7 +285,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT untuk tabel `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1118;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1115;
 
 --
 -- AUTO_INCREMENT untuk tabel `barang_laku`
@@ -211,10 +294,28 @@ ALTER TABLE `barang_laku`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
+-- AUTO_INCREMENT untuk tabel `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
 -- AUTO_INCREMENT untuk tabel `pengeluaran`
 --
 ALTER TABLE `pengeluaran`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `transaksi`
+--
+ALTER TABLE `transaksi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT untuk tabel `transaksi_detail`
+--
+ALTER TABLE `transaksi_detail`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

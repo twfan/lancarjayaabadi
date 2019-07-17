@@ -4,10 +4,10 @@ include 'header.php';
 
 //set page session product
 // ==================================
-if (isset($_GET["page"])) {
-  $page  = $_GET["page"];
+if (isset($_GET["id"])) {
+  $idFaktur  = $_GET["id"];
 } else {
-  $page = 1;
+  $idFaktur = "";
 };
 
 
@@ -35,6 +35,19 @@ $start = ($page - 1) * $per_hal;
   <div style="margin-top:15px;margin-bottom:15px;">
     <h2>Laporan Penjualan</h2>
   </div>
+
+  <div class="row">
+        <div class="col-sm-4" style="margin-bottom: 10px; padding:10px;">
+            <form action="laporan_per_id.php" method="post">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Nomor Faktur</label>
+                    <input type="text" class="form-control" name="id" aria-describedby="nama" placeholder="Nomor faktur">
+                    <small id="emailHelp" class="form-text text-muted">Ketik nomor faktur dengan lengkap dan benar</small>
+                </div>
+                <button type="submit" class="btn btn-primary" style="margin-top:10px;">Cek Detail</button>
+            </form>
+        </div>
+    </div>
   
 </main>
 
