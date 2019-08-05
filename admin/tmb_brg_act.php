@@ -27,9 +27,6 @@ $pkp1_price = ceil(($pkp1_percent/100 * $ecer_price)) +  $modal;
 $pkp2_price = ceil(($pkp2_percent/100 * $ecer_price)) +  $modal;
 
 
-echo " harga grosir = ".$grosir_price. " harga semi_grosir = ".$semi_grosir_price. " harga ecer = ".$ecer_price. " harga pkp1 = ".$pkp1_price." harga pkp2 = ".$pkp2_price ; 
-
-
 
 $result = mysqli_query($con, "insert into barang values('','$nama','$modal','$grosir_price','$semi_grosir_price','$ecer_price','$pkp1_price','$pkp2_price','$jumlah','$sisa')");
 if (!$result) {

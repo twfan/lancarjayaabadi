@@ -23,26 +23,52 @@ $ecer_price = ($ecer_percent / 100 * $modal) +  $modal;
 $pkp1_price = ceil(($pkp1_percent / 100 * $ecer_price)) +  $ecer_price;
 $pkp2_price = ceil(($pkp2_percent / 100 * $ecer_price)) +  $ecer_price;
 
-$cari = mysqli_real_escape_string($con,$nama);
-$brg = mysqli_query($con, "select * from barang where nama = '$cari' ");
-if ($brg) {
-    while ($b = mysqli_fetch_array($brg)) {
-        $id = $b["id"];
-        $stock_sisa = $b["sisa"];
-        $stock_akhir = $stock_sisa + $jumlah;
-
-        $result = mysqli_query($con, "UPDATE `barang` SET `modal` = $modal, `sisa` = $stock_akhir WHERE `barang`.`id` = $id");
-        if (!$result) {
-            throw new Exception(mysqli_error($con));
-        } else {
-            header("location:dashboard.php");
-        }
-    }
-} else {
-    $result = mysqli_query($con, "insert into barang values('','$nama','$modal','$grosir_price','$semi_grosir_price','$ecer_price','$pkp1_price','$pkp2_price','$jumlah')");
-    if (!$result) {
-        throw new Exception(mysqli_error($con));
-    } else {
-        header("location:dashboard.php");
-    }
+$cekNamaBarang = mysqli_query($con, "select * from barang where nama='$nama'");
+if(mysqli_num_rows($cekNamaBarang)>0){
+    $row = mysqli_fetch_array($cekNamaBarang);
+    $id = $row["id"];
+    $jumlahSekarang = $row["jumlah"] + $jumlah;
+    $sisaSekarang = $row["sisa"] + $sisa;
+    $result = mysqli_query($con, "update barang set  nama='$nama', modal='$modal', grosir='$grosir_price', semi='$semi_grosir_price', ecer='$ecer_price', pkp1='$pkp1_price' , pkp2='$pkp2_price' , jumlah='$jumlahSekarang' , sisa='$sisaSekarang' where id='$id'");
+    header("location:dashboard.php");
+}else{
+    $result = mysqli_query($con, "insert into barang values('','$nama','$modal','$grosir_price','$semi_grosir_price','$ecer_price','$pkp1_price','$pkp2_price','$jumlah','$sisa')");
+    header("location:dashboard.php");
 }
+
+if (!$result) {
+    throw new Exception(mysqli_error($con));
+}else{
+    header("location:dashboard.php");
+}
+
+
+
+
+// $cari = mysqli_real_escape_string($con,$nama);
+// $brg = mysqli_query($con, "select * from barang where nama = '$cari' ");
+// // var_dump($brg);
+// if ($brg) {
+//     echo "masuk atas";
+//     while ($b = mysqli_fetch_array($brg)) {
+//         $id = $b["id"];
+//         $stock_sisa = $b["sisa"];
+//         $stock_akhir = $stock_sisa + $jumlah;
+
+//         $result = mysqli_query($con, "UPDATE `barang` SET `modal` = $modal, `sisa` = $stock_akhir WHERE `barang`.`id` = $id");
+//         if (!$result) {
+//             throw new Exception(mysqli_error($con));
+//         } else {
+//             header("location:dashboard.php");
+//         }
+//     }
+// } else {
+    
+//     echo "masuk bawah";
+//     $result = mysqli_query($con, "insert into barang values('','$nama','$modal','$grosir_price','$semi_grosir_price','$ecer_price','$pkp1_price','$pkp2_price','$jumlah')");
+//     if (!$result) {
+//         throw new Exception(mysqli_error($con));
+//     } else {
+//         header("location:dashboard.php");
+//     }
+// }

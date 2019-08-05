@@ -54,7 +54,8 @@ include 'header.php';
                     $total_transaksi = $x['total'];
 
                     ?>
-                    <h4 style="margin-bottom:40px;">Jumlah Pembayaran <?php echo "Rp. " . number_format($x['total']) . ",-" ?> </h4> <button type="submit" class="btn btn-primary" style="height:40px;width:130px;margin-left:20px;" data-toggle="modal" data-target="#modalCheckoutPembayaran" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg> Pembayaran</button>
+                    <h4 style="margin-bottom:40px;">Jumlah Pembayaran <?php echo "Rp. " . number_format($x['total']) . ",-" ?> </h4> 
+                    <button type="submit" class="btn btn-primary" style="height:40px;width:130px;margin-left:20px;" data-toggle="modal" data-target="#modalCheckoutPembayaran" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg> Pembayaran</button>
                 <?php
                 }
                 ?>
