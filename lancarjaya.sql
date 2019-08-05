@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Jul 2019 pada 22.07
+-- Waktu pembuatan: 05 Agu 2019 pada 14.14
 -- Versi server: 10.3.16-MariaDB
 -- Versi PHP: 7.1.30
 
@@ -76,7 +76,8 @@ INSERT INTO `barang` (`id`, `nama`, `modal`, `grosir`, `semi`, `ecer`, `pkp1`, `
 (1111, '1-22330', 5000, 6250, 6750, 7250, 5435, 5798, 250, 250),
 (1112, '1-2051', 6000, 7500, 8100, 8700, 6522, 6957, 50, 50),
 (1113, '1009', 500, 625, 675, 725, 544, 580, 0, 0),
-(1114, '1-6075 T6L', 33000, 41250, 44550, 47850, 35871, 38264, 50, 50);
+(1114, '1-6075 T6L', 33000, 41250, 44550, 47850, 35871, 38264, 50, 50),
+(1115, '12345', 1500, 1875, 2025, 2175, 1631, 1740, 5024, 5024);
 
 -- --------------------------------------------------------
 
@@ -171,7 +172,7 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`grosir`, `semi_grosir`, `ecer`, `pkp1`, `pkp2`) VALUES
-(25, 35, 45, 6, 11);
+(12, 13, 14, 15, 16);
 
 -- --------------------------------------------------------
 
@@ -285,7 +286,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT untuk tabel `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1115;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1116;
 
 --
 -- AUTO_INCREMENT untuk tabel `barang_laku`
@@ -297,7 +298,7 @@ ALTER TABLE `barang_laku`
 -- AUTO_INCREMENT untuk tabel `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT untuk tabel `pengeluaran`
