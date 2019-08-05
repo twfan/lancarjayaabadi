@@ -27,7 +27,7 @@
 
     <!-- Custom styles for this template -->
     <link href="./tes_files/dashboard.css" rel="stylesheet">
-    <link href="../assets/css/custom-style.css" rel="stylesheet">
+    <link href="./assets/css/custom-style.css" rel="stylesheet">
     <style type="text/css">
         /* Chart.js */
         @-webkit-keyframes chartjs-render-animation {

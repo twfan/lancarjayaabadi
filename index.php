@@ -1,50 +1,71 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>KIOS MALASNGODING</title>
-	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="assets/js/jquery-ui/jquery-ui.css">
-	<script type="text/javascript" src="assets/js/jquery.js"></script>
-	<script type="text/javascript" src="assets/js/bootstrap.js"></script>
-	<script type="text/javascript" src="assets/js/jquery-ui/jquery-ui.js"></script>
-	<?php include 'admin/config.php'; ?>
-	<style type="text/css">
-	.kotak{	
-		margin-top: 150px;
-	}
+<!-- saved from url=(0051)https://getbootstrap.com/docs/4.3/examples/sign-in/ -->
+<html lang="en">
+<script type="text/javascript" charset="utf-8" id="zm-extension" src="chrome-extension://fdcgdnkidjaadafnichfpabhfomcebme/scripts/webrtc-patch.js" async=""></script>
 
-	.kotak .input-group{
-		margin-bottom: 20px;
-	}
-	</style>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Jekyll v3.8.5">
+  <link rel="assets/logoLJA.jpeg" type="image/x-icon" href="" />
+  <title>Lancar Jaya Abadi</title>
+  
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/sign-in/">
+
+  <!-- Bootstrap core CSS -->
+  <link href="./login_files/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+  <!-- Custom styles for this template -->
+  <link href="./login_files/signin.css" rel="stylesheet">
 </head>
-<body>	
-	<div class="container">
-		<?php 
-		if(isset($_GET['pesan'])){
-			if($_GET['pesan'] == "gagal"){
-				echo "<div style='margin-bottom:-55px' class='alert alert-danger' role='alert'><span class='glyphicon glyphicon-warning-sign'></span>  Login Gagal !! Username dan Password Salah !!</div>";
-			}
-		}
-		?>
-		<div class="panel panel-default">
-			<form action="login_act.php" method="post">
-				<div class="col-md-4 col-md-offset-4 kotak">
-					<h3>Silahkan Login ..</h3>
-					<div class="input-group">
-						<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-						<input type="text" class="form-control" placeholder="Username" name="uname">
-					</div>
-					<div class="input-group">
-						<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-						<input type="password" class="form-control" placeholder="Password" name="pass">
-					</div>
-					<div class="input-group">			
-						<input type="submit" class="btn btn-primary" value="Login">
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
+
+<body class="text-center" cz-shortcut-listen="true">
+  <form action="login_system.php" method="post" class="form-signin">
+    <!-- <img class="mb-4" src="./login_files/bootstrap-solid.svg" alt="" width="72" height="72"> -->
+    
+    <h1 class="h3 mb-3 font-weight-normal">Lancar Jaya Abadi</h1>
+    <div>
+      <img class="mb-4" src="assets/logoLJA.jpeg" alt="Logo" height="100" width="150">
+    </div>
+    
+    <div class="mb-3">
+      <label for=""></label>
+    </div>
+    <label for="inputEmail" class="sr-only">Username</label>
+    <input type="text" name="uname" id="inputEmail" class="form-control" placeholder="Username" required="" autofocus="">
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" class="form-control" name="pass" placeholder="Password" required="">
+    <div class="checkbox mb-3">
+      <label>
+        <!-- <input type="checkbox" value="remember-me"> Remember me -->
+      </label>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+    <p class="mt-5 mb-3 text-muted">© 2019</p>
+  </form>
+
+
 </body>
+
 </html>

@@ -15,6 +15,5 @@ if (!$result) {
     throw new Exception(mysqli_error($con));
 }else{
     header("location:index.php");
-    // echo "Sukses";
 }
  ?>
