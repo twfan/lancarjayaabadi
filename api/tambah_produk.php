@@ -3,6 +3,7 @@ session_start();
 include 'admin/config.php';
 
 $con = mysqli_connect("localhost","root","","lancarjaya");
+// $con = mysqli_connect("localhost","u112715437_root","taufan1204","u112715437_store");
 $nama=$_POST['nama'];
 $modal=$_POST['modal'];
 $jumlah=$_POST['jumlah'];

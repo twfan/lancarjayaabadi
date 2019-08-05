@@ -2,6 +2,7 @@
 // session_start();
 // include 'admin/config.php';
 
+$con = mysqli_connect("localhost","u112715437_root","taufan1204","u112715437_store");
 $con = mysqli_connect("localhost","root","","lancarjaya");
 $uname=$_POST['username'];
 $pass=$_POST['password'];
