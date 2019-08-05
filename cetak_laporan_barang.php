@@ -1,6 +1,6 @@
 <?php
 include 'config.php';
-require('../assets/pdf/fpdf.php');
+require('./assets/pdf/fpdf.php');
 
 $pdf = new FPDF("L","cm","A4");
 
@@ -8,15 +8,15 @@ $pdf->SetMargins(2,1,1);
 $pdf->AliasNbPages();
 $pdf->AddPage();
 $pdf->SetFont('Times','B',11);
-$pdf->Image('../assets/logoLJA.jpeg',1,1,2,2);
+$pdf->Image('./assets/ljaBlankLogo.png',1,1,3,2);
 $pdf->SetX(4);            
 $pdf->MultiCell(19.5,0.5,'LANCAR JAYA ABADI',0,'L');
-// $pdf->SetX(4);
+$pdf->SetX(4);
 $pdf->MultiCell(19.5,0.5,'Telp 082231772977, 083857133999',0,'L');    
 $pdf->SetFont('Arial','B',10);
-// $pdf->SetX(4);
+$pdf->SetX(4);
 $pdf->MultiCell(19.5,0.5,'Jl. Kedung Anyar 9/21 Surabaya (60251)',0,'L');
-// $pdf->SetX(4);
+$pdf->SetX(4);
 // $pdf->MultiCell(19.5,0.5,'website : www.malasngoding.com email : malasngoding@gmail.com',0,'L');
 $pdf->Line(1,3.1,28.5,3.1);
 $pdf->SetLineWidth(0.1);      
