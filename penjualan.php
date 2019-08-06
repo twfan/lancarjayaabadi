@@ -9,6 +9,9 @@ if (isset($_GET["tipeHarga"])) {
     header('Location:pilihan_harga.php');
 };
 
+
+
+
 include 'header.php';
 
 
@@ -26,12 +29,14 @@ include 'header.php';
     </div>
 
     <div style="margin-top:15px;margin-bottom:15px;">
-        <h2>Data Penjualan - <?php echo $_GET["tipeHarga"]; ?></h2>
+        <h2>Data Penjualan - <?php echo $_GET["tipeHarga"]; ?></h2> <a href="pilihan_harga.php" style="padding-top:5px;">+ Transaksi baru</a>
     </div>
+    <div></div>
 
     <div class="row">
         <div class="col-sm-4" style="margin-bottom: 10px; padding:10px;">
             <form action="add_to_cart.php" method="post">
+
                 <div class="form-group">
                     <label for="exampleInputEmail1">Nama Barang</label>
                     <input type="text" class="form-control" name="namaBarang" aria-describedby="nama" placeholder="Nama Barang">
@@ -42,6 +47,18 @@ include 'header.php';
                     <input type="number" class="form-control" name="banyak" placeholder="Banyak">
                 </div>
                 <button type="submit" class="btn btn-primary" style="margin-top:10px;">Tambah keranjang</button>
+                <?php
+                if (isset($_SESSION["message"])) {
+                    ?>
+                    <div class="alert alert-danger" style="margin-top:10px;" role="alert">
+                        <?php echo $_SESSION["message"]   ?>
+                    </div>
+                    <?php
+                    unset($_SESSION["message"]);
+                } else {
+                    // echo "tidak ada";
+                }
+                ?>
             </form>
         </div>
         <div class="col-md-5 offset-md-1">
@@ -60,6 +77,8 @@ include 'header.php';
                             <circle cx="20" cy="21" r="1"></circle>
                             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                         </svg> Pembayaran</button>
+
+
                 <?php
                 }
                 ?>
@@ -92,7 +111,7 @@ include 'header.php';
                                     <td><?php echo "Rp. " . number_format($b['jumlah']) . ",-" ?></td>
                                     <td>
                                         <!-- <a href="det_barang.php?id=<?php echo $b['id']; ?>" class="btn btn-info">Detail</a> -->
-                                        <a href="edit_barang.php?id=<?php echo $b['id']; ?>" class="btn btn-warning">Edit</a>
+                                        <a href="edit_barang_transaction.php?id=<?php echo $b['id']; ?>" class="btn btn-warning">Edit</a>
                                         <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalTambahBarang" style="margin-bottom:20px;"><span class="oi oi-plus" style="margin-right:5px;"></span>Tambah barang</button> -->
                                         <a onclick="if(confirm('Apakah anda yakin ingin menghapus data ini ??')){ location.href='hapus_item_cart.php?id=<?php echo $b['id']; ?>' }" class="btn btn-danger">Hapus</a>
                                     </td>
