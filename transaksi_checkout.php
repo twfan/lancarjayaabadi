@@ -44,8 +44,7 @@ if (!$result) {
         }
 
         include 'remove_item_cart.php';
-
-        header("location:cetak.php?idTransaksi=". $idTransaksi);
+        header("Refresh:0; url=cetak.php?idTransaksi=". $idTransaksi);
     }
 }
 
