@@ -33,6 +33,9 @@ $dataDetail = mysqli_fetch_assoc($detailTransaksi);
 <body>
     <table style="font-size: 10px;margin-bottom:20px;margin-top:20px;">
         <tr>
+            <td><img src="assets/ljaBlankLogo.png" width="80 " height="50"></td>
+        </tr>
+        <tr>
             <td style="font-size:20px;">LANCAR JAYA ABADI - Rekap Nota</td>
         </tr>
         <tr>
@@ -109,6 +112,9 @@ $dataDetail = mysqli_fetch_assoc($detailTransaksi);
     ?>
 
     <table style="font-size: 10px;margin-bottom:20px;margin-top:20px;">
+        <tr>
+            <td><img src="assets/ljaBlankLogo.png" width="80 " height="50"></td>
+        </tr>
         <tr>
             <td style="font-size:20px;">LANCAR JAYA ABADI - Rekap Nota</td>
         </tr>
