@@ -47,15 +47,15 @@ $dataDetail = mysqli_fetch_assoc($detailTransaksi);
         <div class="col-md-2">
             <table style="font-size: 10px;margin-bottom:20px;">
                 <tr>
-                    <td colspan="2" style="font-size:10px;" width="180px;">Nota pembelian <br> Nomor faktur : <span style="font-weight:bold;"><?php echo $idTransaksi ?></span> <br>dibawa oleh <span style="font-weight:bold;">pembeli</span>         </td>
+                    <td colspan="2" style="font-size:10px;" width="180px;">Nota pembelian <br> Nomor faktur : <span style="font-weight:bold;"><?php echo $idTransaksi ?></span> <br>dibawa oleh <span style="font-weight:bold;">pembeli</span> </td>
                     <!-- <td colspan="2"></td> -->
                     <td colspan="2" style="font-size:10px;">Yang terhormat <br>Toko: <?php echo strtoupper($dataDetail["nama_toko"]);  ?> <br> Tuan: <?php echo strtoupper($dataDetail["nama_pembeli"]);  ?> </td>
                 </tr>
                 <tr>
-                    <td style="font-size:12px;margin-top:10px;"> Total Pembayaran   </td>
+                    <td style="font-size:12px;margin-top:10px;"> Total Pembayaran </td>
                     <td></td>
                     <td></td>
-                    
+
                 </tr>
                 <tr>
                     <td><span style="font-size:15px;font-weight:bold;"><?php echo  "Rp. " . number_format($dataDetail["total_transaksi"]) ?></span></td>
@@ -92,6 +92,11 @@ $dataDetail = mysqli_fetch_assoc($detailTransaksi);
         }
         ?>
     </table>
+    <table width="100%" style="font-size: 10px;margin-top:5px;margin-right:20;text-align:right">
+        <tr>
+            <td><span style="font-size:15px;font-weight:bold;"><?php echo  "Total Pembayaran : Rp. " . number_format($dataDetail["total_transaksi"]) ?></span></td>
+        </tr>
+    </table>
 
     <div style=page-break-before:always align="center"><span style="visibility: hidden;">-</span></div>
 
@@ -125,10 +130,10 @@ $dataDetail = mysqli_fetch_assoc($detailTransaksi);
                 </tr>
 
                 <tr>
-                    <td style="font-size:12px;margin-top:10px;"> Total Pembayaran   </td>
+                    <td style="font-size:12px;margin-top:10px;"> Total Pembayaran </td>
                     <td></td>
                     <td></td>
-                    
+
                 </tr>
                 <tr>
                     <td><span style="font-size:15px;font-weight:bold;"><?php echo  "Rp. " . number_format($dataDetail["total_transaksi"]) ?></span></td>
@@ -163,6 +168,11 @@ $dataDetail = mysqli_fetch_assoc($detailTransaksi);
         <?php
         }
         ?>
+    </table>
+    <table width="100%" style="font-size: 10px;margin-top:5px;margin-right:20;text-align:right">
+        <tr>
+            <td><span style="font-size:15px;font-weight:bold;"><?php echo  "Total Pembayaran : Rp. " . number_format($dataDetail["total_transaksi"]) ?></span></td>
+        </tr>
     </table>
 
 
