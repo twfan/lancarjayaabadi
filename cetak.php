@@ -77,9 +77,9 @@ $dataDetail = mysqli_fetch_assoc($detailTransaksi);
     <small style="font-size:7px;">*Barang yang sudah dibeli tidak dapat dikembalikan</small>
     <table border="1" style="width: 100%;font-size: 12px;">
         <tr>
-            <th>No</th>
+            <th style="text-align:center; ">No</th>
             <th width="5%">Banyak</th>
-            <th>Nama Barang</th>
+            <th style="text-align:center; ">Nama Barang</th>
             <th>Harga</th>
             <th>Jumlah</th>
 
@@ -91,7 +91,7 @@ $dataDetail = mysqli_fetch_assoc($detailTransaksi);
             <tr>
                 <td style="text-align:center; "><?php echo $no++; ?></td>
                 <td style="text-align:center; "><?php echo $data['banyak']; ?></td>
-                <td><?php echo $data['nama_barang']; ?></td>
+                <td style="text-align:center; "><?php echo $data['nama_barang']; ?></td>
                 <td><?php echo "Rp. " . number_format($data['harga']); ?></td>
                 <td><?php echo "Rp. " . number_format($data['harga'] * $data['banyak']); ?></td>
             </tr>
@@ -158,9 +158,9 @@ $dataDetail = mysqli_fetch_assoc($detailTransaksi);
     <small style="font-size:7px;">*Barang yang sudah dibeli tidak dapat dikembalikan</small>
     <table border="1" style="width: 100%;font-size: 12px;">
         <tr>
-            <th>No</th>
+            <th style="text-align:center; ">No</th>
             <th width="5%">Banyak</th>
-            <th>Nama Barang</th>
+            <th style="text-align:center; ">Nama Barang</th>
             <th>Harga</th>
             <th>Jumlah</th>
 

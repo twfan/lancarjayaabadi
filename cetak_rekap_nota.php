@@ -87,7 +87,7 @@ $dataDetail = mysqli_fetch_assoc($detailTransaksi);
             <tr>
                 <td style="text-align:center; "><?php echo $no++; ?></td>
                 <td style="text-align:center; "><?php echo $data['banyak']; ?></td>
-                <td><?php echo $data['nama_barang']; ?></td>
+                <td style="text-align:center; "><?php echo $data['nama_barang']; ?></td>
                 <td><?php echo "Rp. " . number_format($data['harga']); ?></td>
                 <td><?php echo "Rp. " . number_format($data['harga'] * $data['banyak']); ?></td>
             </tr>
