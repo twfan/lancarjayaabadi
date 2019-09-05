@@ -191,7 +191,7 @@ $dataDetail = mysqli_fetch_assoc($detailTransaksi);
 
     <script>
         window.print();
-        // window.close();
+        window.close();
     </script>
 
 </body>
