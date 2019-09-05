@@ -65,10 +65,11 @@ include 'header.php';
             <div class="row">
                 <?php
 
-                $query = mysqli_query($con, "select SUM(`jumlah`) as 'total' from cart order by id DESC");
+                $query = mysqli_query($con, "select SUM(`jumlah`) as 'total', SUM(`banyak`) as 'total_barang' from cart order by id DESC");
                 $no = 1;
                 while ($x = mysqli_fetch_array($query)) {
                     $total_transaksi = $x['total'];
+                    $total_barang = $x['total_barang'];
 
                     ?>
                     <h4 style="margin-bottom:40px;">Jumlah Pembayaran <?php echo "Rp. " . number_format($x['total']) . ",-" ?> </h4>
@@ -170,6 +171,9 @@ include 'header.php';
                     </div>
                     <div class="form-group ">
                         <input name="totalTransaksi" type="hidden" class="form-control" placeholder="Nama Pembeli" value="<?php echo $total_transaksi; ?>">
+                    </div>
+                    <div class="form-group ">
+                        <input name="totalBarang" type="hidden" class="form-control" placeholder="Nama Pembeli" value="<?php echo $total_barang; ?>">
                     </div>
             </div>
             <div class="modal-footer">

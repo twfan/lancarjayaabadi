@@ -4,9 +4,10 @@ include 'config.php';
 $toko = $_POST['toko'];
 $nama = $_POST['nama'];
 $total_transaksi = $_POST['totalTransaksi'];
+$total_barang = $_POST['totalBarang'];
 $tanggalSekarang = date("Y-m-d");
 
-$result = mysqli_query($con, "insert into transaksi values('','$toko','$nama','$total_transaksi','$tanggalSekarang')");
+$result = mysqli_query($con, "insert into transaksi values('','$toko','$nama','$total_transaksi','$total_barang','$tanggalSekarang')");
 if (!$result) {
     throw new Exception(mysqli_error($con));
 } else {
