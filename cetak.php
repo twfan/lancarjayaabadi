@@ -99,12 +99,13 @@ $dataDetail = mysqli_fetch_assoc($detailTransaksi);
         }
         ?>
     </table>
-            <table width="100%" style="font-size: 10px;margin-top:5px;margin-right:20;text-align:right">
-                <tr>
-                    <td><span style="font-size:15px;font-weight:bold;"><?php echo  "Total Pembayaran : Rp. " . number_format($dataDetail["total_transaksi"]) ?></span></td>
-                </tr>
-            </table>
-    
+    <table width="100%" style="font-size: 10px;margin-top:5px;margin-right:20;">
+        <tr>
+            <td><span style="font-size:15px;font-weight:bold;text-align:left"><?php echo  "Total Barang : " . number_format($dataDetail["total_barang"])." pcs" ?></span></td>
+            <td align="right"><span style="font-size:15px;font-weight:bold;text-align:right;"><?php echo  "Total Pembayaran : Rp. " . number_format($dataDetail["total_transaksi"]) ?></span></td>
+        </tr>
+    </table>
+
 
     <div style=page-break-before:always align="center"><span style="visibility: hidden;">-</span></div>
 
@@ -180,16 +181,17 @@ $dataDetail = mysqli_fetch_assoc($detailTransaksi);
         }
         ?>
     </table>
-    <table width="100%" style="font-size: 10px;margin-top:5px;margin-right:20;text-align:right">
-                <tr>
-                    <td><span style="font-size:15px;font-weight:bold;"><?php echo  "Total Pembayaran : Rp. " . number_format($dataDetail["total_transaksi"]) ?></span></td>
-                </tr>
-            </table>
+    <table width="100%" style="font-size: 10px;margin-top:5px;margin-right:20;">
+        <tr>
+        <td><span style="font-size:15px;font-weight:bold;text-align:left"><?php echo  "Total Barang : " . number_format($dataDetail["total_barang"])." pcs" ?></span></td>
+            <td align="right"><span style="font-size:15px;font-weight:bold;text-align:right;"><?php echo  "Total Pembayaran : Rp. " . number_format($dataDetail["total_transaksi"]) ?></span></td>
+        </tr>
+    </table>
 
 
     <script>
         window.print();
-        window.close();
+        // window.close();
     </script>
 
 </body>
